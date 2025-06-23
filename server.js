@@ -22,7 +22,7 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Vite's default ports
+    origin: process.env.CLIENT_URL,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -77,7 +77,7 @@ const startServer = async () => {
     try {
         console.log('Starting server initialization...');
         await connectDB();
-        const PORT = 8000; // Using a higher port number
+        const PORT = 5000; // Using a higher port number
         
         const server = app.listen(PORT, () => {
             console.log(`Server is running on http://localhost:${PORT}`);
